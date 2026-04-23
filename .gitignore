@@ -1,0 +1,18 @@
+# Dependency directories
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.env
+
+# OS files
+.DS_Store
+Thumbs.db

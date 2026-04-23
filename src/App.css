@@ -1,0 +1,274 @@
+:root {
+  --primary: #4285F4;
+  --secondary: #5f6368;
+  --success: #34A853;
+  --warning: #FBBC05;
+  --danger: #EA4335;
+  --neutral-dark: #202124;
+  --neutral-light: #f8f9fa;
+  --white: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #e8eaed;
+  color: var(--neutral-dark);
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.sidebar {
+  width: 380px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+}
+
+.sidebar-header {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding-bottom: 0.5rem;
+}
+
+/* Search Box */
+.search-box {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.search-box input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  color: var(--neutral-dark);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.search-box button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.errand-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.errand-list.scrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.errand-card.compact {
+  background: var(--white);
+  padding: 0.75rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.errand-card.compact:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.errand-card.active {
+  border-color: var(--primary);
+  background: rgba(66, 133, 244, 0.03);
+}
+
+.errand-card.priority {
+  border-right: 4px solid var(--warning);
+}
+
+.errand-index-small {
+  width: 24px;
+  height: 24px;
+  background: var(--neutral-light);
+  color: var(--primary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.errand-info h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.reorder-actions-horizontal {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.reorder-actions-horizontal button {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  padding: 2px;
+  transition: color 0.2s;
+}
+
+.reorder-actions-horizontal button:hover:not(:disabled) {
+  color: var(--primary);
+}
+
+.priority-btn-small {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.priority-btn-small.active {
+  color: var(--warning);
+}
+
+.stats-mini {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.actions-grid-compact {
+  display: grid;
+  grid-template-columns: 1fr 1fr 50px;
+  gap: 8px;
+}
+
+.btn-primary-small, .btn-secondary-small, .btn-danger-small {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.btn-primary-small { background: var(--primary); color: white; }
+.btn-primary-small:hover { background: #3367d6; }
+.btn-secondary-small { background: #f1f3f4; color: var(--neutral-dark); }
+.btn-secondary-small:hover { background: #e8eaed; }
+.btn-danger-small { background: rgba(234, 67, 53, 0.1); color: var(--danger); }
+.btn-danger-small:hover { background: rgba(234, 67, 53, 0.2); }
+
+.map-viewport {
+  flex: 1;
+  position: relative;
+}
+
+/* Leaflet Overrides */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+.marker-pin {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--danger); /* Changed to red */
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -15px 0 0 -15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.marker-pin.start { background: var(--success); }
+
+.marker-pin span {
+  transform: rotate(45deg);
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.route-flow {
+  animation: flow 20s linear infinite;
+}
+
+@keyframes flow {
+  from { stroke-dashoffset: 200; }
+  to { stroke-dashoffset: 0; }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.delete-btn-small { 
+  background: none; 
+  border: none; 
+  color: #ccc; 
+  cursor: pointer; 
+  transition: color 0.2s; 
+  padding: 2px; 
+}
+.delete-btn-small:hover { 
+  color: var(--danger); 
+}
