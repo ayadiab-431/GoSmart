@@ -26,7 +26,7 @@ function MapEvents({ onMapClick }) {
 
 const API_BASE_URL = window.location.hostname === 'localhost' 
   ? 'http://localhost:8000' 
-  : 'https://YOUR-BACKEND-NAME.onrender.com'; // Change this after deploying to Render
+  : 'https://gosmart-production.up.railway.app'; 
 
 function App() {
   const [errands, setErrands] = useState([]);
